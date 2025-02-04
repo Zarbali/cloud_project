@@ -34,16 +34,16 @@ def get_tasks(user_id):
     if not user:
         return jsonify({"error": "User not found"}), 404
 
-    # Ключ для кеша в зависимости от пользователя
+
     cache_key = f"tasks_user_{user_id}" if user.role != "admin" else "tasks_admin"
 
-    # ✅ Проверяем, есть ли кешированные данные
+
     cached_tasks = redis_client.get(cache_key)
     if cached_tasks:
-        print(f"✅ Данные загружены из Redis: {cache_key}")  # Логируем
-        return jsonify({"tasks": eval(cached_tasks)}), 200  # Если есть, возвращаем кеш
+        print(f"✅ The data is downloaded from Redis: {cache_key}")
+        return jsonify({"tasks": eval(cached_tasks)}), 200
 
-    # ❌ Кеш отсутствует, загружаем из БД
+
     tasks = Task.query.all() if user.role == "admin" else Task.query.filter_by(user_id=user_id).all()
     tasks_data = [{
         "id": task.id,

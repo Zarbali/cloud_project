@@ -2,14 +2,14 @@ from flask import Blueprint, jsonify, request
 from db_models import db, User
 from werkzeug.security import generate_password_hash, check_password_hash
 from auth import token_required
-from flask_cors import CORS  # ✅ Разрешение CORS
+from flask_cors import CORS
 from flasgger import swag_from
 
 users_blueprint = Blueprint("users", __name__)
-CORS(users_blueprint, resources={r"/*": {"origins": "*"}}, supports_credentials=True)  # ✅ Глобальный CORS
+CORS(users_blueprint, resources={r"/*": {"origins": "*"}}, supports_credentials=True)
 
 
-# ✅ Получение списка пользователей (Только для админов)
+# ✅ Getting the list of users (Only for admins)
 @users_blueprint.route("/", methods=["GET"])
 @token_required
 @swag_from({
@@ -46,7 +46,7 @@ def get_users(user_id):
     ]), 200
 
 
-# ✅ Получение информации о текущем пользователе
+# ✅ Getting information about the current user
 @users_blueprint.route("/me", methods=["GET"])
 @token_required
 @swag_from({
@@ -70,7 +70,7 @@ def get_me(user_id):
     }), 200
 
 
-# ✅ Получение информации о пользователе по ID (для админов)
+# ✅ Getting information about a user by ID (for admins)
 @users_blueprint.route("/<int:user_id>", methods=["GET"])
 @token_required
 @swag_from({
@@ -92,7 +92,7 @@ def get_me(user_id):
     }
 })
 def get_user_by_id(admin_id, user_id):
-    """Позволяет администратору получать информацию о пользователе по ID"""
+    """Allows the administrator to retrieve user information by user ID"""
     admin = User.query.get(admin_id)
     if not admin or admin.role != "admin":
         return jsonify({"error": "Insufficient permissions"}), 403
@@ -109,7 +109,8 @@ def get_user_by_id(admin_id, user_id):
     }), 200
 
 
-# ✅ Удаление аккаунта пользователем
+# ✅ Deleting an account by a user
+
 @users_blueprint.route("/delete", methods=["DELETE"])
 @token_required
 @swag_from({
@@ -131,7 +132,8 @@ def delete_self(user_id):
     return jsonify({"message": "Account deleted successfully"}), 200
 
 
-# ✅ Удаление пользователя админом
+# ✅ Deleting a user by admin
+
 @users_blueprint.route("/admin/delete/<int:user_id>", methods=["DELETE"])
 @token_required
 @swag_from({
@@ -167,10 +169,11 @@ def delete_user(admin_id, user_id):
     return jsonify({"message": "User successfully deleted"}), 200
 
 
-# ✅ Глобальная обработка preflight-запросов (CORS)
+# ✅ Global preflight request processing (CORS)
+
 @users_blueprint.before_request
 def handle_options():
-    """Разрешает preflight OPTIONS-запросы"""
+    """Enables preflight OPTIONS requests"""
     if request.method == "OPTIONS":
         response = jsonify({"message": "Preflight OK"})
         response.headers.add("Access-Control-Allow-Origin", "*")

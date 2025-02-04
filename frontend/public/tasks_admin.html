@@ -33,7 +33,7 @@
             }
 
             try {
-                // Получаем информацию о пользователе
+
                 const userResponse = await fetch(`http://localhost:5000/users/${userId}`, {
                     headers: { "Authorization": `Bearer ${token}` }
                 });
@@ -47,7 +47,7 @@
                     return;
                 }
 
-                // Получаем задачи пользователя
+
                 const response = await fetch(`http://localhost:5000/tasks/admin/${userId}`, {
                     headers: { "Authorization": `Bearer ${token}` }
                 });

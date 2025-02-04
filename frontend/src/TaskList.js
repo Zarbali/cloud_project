@@ -10,7 +10,7 @@ export default function TaskList({ tasks, onTaskDeleted, onTaskUpdated }) {
         setEditingTaskId(task.id);
         setEditedTitle(task.title);
         setEditedDescription(task.description);
-        setEditedStatus(task.status || "To Do"); // ✅ По умолчанию "To Do"
+        setEditedStatus(task.status || "To Do"); // ✅ Default to "To Do"
     };
 
     const handleSaveEdit = () => {
@@ -48,7 +48,7 @@ export default function TaskList({ tasks, onTaskDeleted, onTaskUpdated }) {
                                     placeholder="Edit description"
                                 ></textarea>
 
-                                {/* ✅ Добавляем выпадающий список для выбора статуса */}
+                                {/* ✅ Dropdown for selecting task status */}
                                 <select
                                     value={editedStatus}
                                     onChange={(e) => setEditedStatus(e.target.value)}
@@ -58,8 +58,8 @@ export default function TaskList({ tasks, onTaskDeleted, onTaskUpdated }) {
                                     <option value="Done">Done</option>
                                 </select>
 
-                                <button className="save-button" onClick={handleSaveEdit}>Сохранить</button>
-                                <button className="cancel-button" onClick={handleCancelEdit}>Отменить</button>
+                                <button className="save-button" onClick={handleSaveEdit}>Save</button>
+                                <button className="cancel-button" onClick={handleCancelEdit}>Cancel</button>
                             </div>
                         ) : (
                             <div>
@@ -68,7 +68,7 @@ export default function TaskList({ tasks, onTaskDeleted, onTaskUpdated }) {
                                 {task.user_id && <p>User ID: {task.user_id}</p>}
                                 <p>Creation Date: {new Date(task.created_at).toLocaleString()}</p>
 
-                                {/* ✅ Отображаем статус задачи */}
+                                {/* ✅ Display task status */}
                                 <p>
                                     Status:{" "}
                                     <span className={`task-status status-${task.status.toLowerCase().replace(" ", "-")}`}>
@@ -76,8 +76,8 @@ export default function TaskList({ tasks, onTaskDeleted, onTaskUpdated }) {
                                     </span>
                                 </p>
 
-                                <button className="edit-button" onClick={() => handleEdit(task)}>Редактировать</button>
-                                <button className="delete-button" onClick={() => onTaskDeleted(task.id)}>Удалить</button>
+                                <button className="edit-button" onClick={() => handleEdit(task)}>Edit</button>
+                                <button className="delete-button" onClick={() => onTaskDeleted(task.id)}>Delete</button>
                             </div>
                         )}
                     </li>

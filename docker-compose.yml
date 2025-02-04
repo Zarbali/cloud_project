@@ -1,7 +1,7 @@
 version: '3.8'
 
 services:
-  # 1) Flask-приложение
+
   backend:
     build: ./backend
     container_name: flask_app
@@ -11,21 +11,21 @@ services:
     ports:
       - "5000:5000"
     environment:
-      # Секретный ключ Flask
+
       - SECRET_KEY=dev_secret
 
-      # Переменные для подключения к Postgres
+
       - DB_HOST=db
       - DB_PORT=5432
       - DB_USER=postgres
       - DB_PASSWORD=postgres
       - DB_NAME=cloud_db
 
-      # Переменные для Redis
+
       - REDIS_HOST=redis
       - REDIS_PORT=6379
 
-      # ✅ Добавляем FLASK_APP и режим разработки
+
       - FLASK_APP=src.app
       - FLASK_ENV=development
       - FLASK_DEBUG=1
@@ -65,7 +65,7 @@ services:
     ports:
       - "3000:80"
     environment:
-      # Если Flask в том же docker-compose, внутри сети он виден как http://backend:5000
+
       - REACT_APP_API_URL=http://backend:5000
     depends_on:
       - backend

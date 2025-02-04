@@ -2,11 +2,11 @@ from flask import Flask, jsonify, request
 from flask_sqlalchemy import SQLAlchemy
 from config import Config
 from db_models import db
-from auth import auth_blueprint  # ✅ Импорт аутентификации
-from tasks import tasks_blueprint  # ✅ Импорт маршрутов для задач
-from users import users_blueprint  # ✅ Импорт маршрутов пользователей
-from flask_cors import CORS  # ✅ Разрешение CORS
-from flasgger import Swagger  # ✅ Импорт Swagger
+from auth import auth_blueprint
+from tasks import tasks_blueprint
+from users import users_blueprint
+from flask_cors import CORS
+from flasgger import Swagger
 from flasgger.utils import swag_from
 
 app = Flask(__name__)
@@ -14,11 +14,11 @@ app.config.from_object(Config)
 
 db.init_app(app)
 
-# ✅ Разрешаем CORS для всех маршрутов
+
 CORS(app, resources={r"/*": {"origins": "*"}}, supports_credentials=True)
 
 
-# ✅ Настройка Swagger UI с поддержкой авторизации через Bearer Token
+
 swagger_template = {
     "swagger": "2.0",
     "info": {
@@ -39,7 +39,7 @@ swagger_template = {
 
 swagger = Swagger(app, template=swagger_template)
 
-# ✅ Регистрируем маршруты
+
 app.register_blueprint(auth_blueprint, url_prefix="/auth")
 app.register_blueprint(tasks_blueprint, url_prefix="/tasks")
 app.register_blueprint(users_blueprint, url_prefix="/users")
@@ -70,10 +70,10 @@ def home():
     return jsonify({"message": "API is running!"}), 200
 
 
-# ✅ Глобальная обработка preflight-запросов (CORS)
+
 @app.before_request
 def handle_options():
-    """Разрешает preflight OPTIONS-запросы перед отправкой запросов с токеном"""
+
     if request.method == "OPTIONS":
         response = jsonify({"message": "Preflight OK"})
         response.headers.add("Access-Control-Allow-Origin", "*")
@@ -82,7 +82,7 @@ def handle_options():
         return response, 200
 
 
-# ✅ Создаём таблицы, если их нет
+
 with app.app_context():
     db.create_all()
 

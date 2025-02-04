@@ -6,15 +6,15 @@ import datetime
 from functools import wraps
 from config import Config
 from flasgger import swag_from
-from flask_cors import CORS, cross_origin  # ✅ Добавлено разрешение CORS
+from flask_cors import CORS, cross_origin
 
 auth_blueprint = Blueprint("auth", __name__)
-CORS(auth_blueprint, resources={r"/*": {"origins": "*"}}, supports_credentials=True)  # ✅ Разрешаем CORS
+CORS(auth_blueprint, resources={r"/*": {"origins": "*"}}, supports_credentials=True)
 
 
-# ✅ Функция генерации токена
+
 def generate_token(user_id):
-    """Генерирует JWT-токен для пользователя"""
+
     payload = {
         "user_id": user_id,
         "exp": datetime.datetime.utcnow() + datetime.timedelta(hours=12)  # Истекает через 12 часов
@@ -23,19 +23,19 @@ def generate_token(user_id):
     return token
 
 
-# ✅ Функция декодирования токена
+
 def decode_token(token):
-    """Проверяет и декодирует JWT-токен"""
+
     try:
         payload = jwt.decode(token, Config.SECRET_KEY, algorithms=["HS256"])
         return payload["user_id"]
     except jwt.ExpiredSignatureError:
-        return None  # Токен истёк
+        return None
     except jwt.InvalidTokenError:
-        return None  # Недействительный токен
+        return None
 
 
-# ✅ Декоратор для защиты маршрутов
+
 def token_required(f):
     @wraps(f)
     def decorated_function(*args, **kwargs):
@@ -55,12 +55,12 @@ def token_required(f):
 
 # ✅ Проверка роли (админ)
 def is_admin(user_id):
-    """Проверяет, является ли пользователь администратором"""
+
     user = User.query.get(user_id)
     return user and user.role == "admin"
 
 
-# ✅ Регистрация пользователя
+
 @auth_blueprint.route("/register", methods=["POST"])
 @cross_origin(origins="http://localhost:3000", supports_credentials=True)  # ✅ Разрешаем CORS
 @swag_from({
@@ -87,7 +87,7 @@ def is_admin(user_id):
     },
 })
 def register():
-    """Регистрация нового пользователя"""
+
     data = request.get_json()
     username = data.get("username")
     email = data.get("email")
@@ -111,7 +111,7 @@ def register():
 
 # ✅ Логин пользователя
 @auth_blueprint.route("/login", methods=["POST"])
-@cross_origin(origins="http://localhost:3000", supports_credentials=True)  # ✅ Разрешаем CORS
+@cross_origin(origins="http://localhost:3000", supports_credentials=True)
 @swag_from({
     "tags": ["Auth"],
     "summary": "User login",
@@ -135,7 +135,7 @@ def register():
     },
 })
 def login():
-    """Аутентификация пользователя"""
+
     data = request.get_json()
     username = data.get("username")
     password = data.get("password")
@@ -151,7 +151,7 @@ def login():
     return jsonify({"token": token, "role": user.role}), 200
 
 
-# ✅ Проверка роли пользователя
+
 @auth_blueprint.route("/check_role", methods=["GET"])
 @token_required
 @cross_origin(origins="http://localhost:3000", supports_credentials=True)  # ✅ Разрешаем CORS
@@ -163,7 +163,7 @@ def login():
     },
 })
 def check_role(user_id):
-    """Возвращает роль пользователя (admin/user)"""
+
     user = User.query.get(user_id)
     if user:
         return jsonify({"role": user.role}), 200
@@ -175,7 +175,7 @@ def check_role(user_id):
 @token_required
 @cross_origin(origins="http://localhost:3000", supports_credentials=True)  # ✅ Разрешаем CORS
 def get_me(user_id):
-    """Возвращает информацию о текущем пользователе"""
+
     user = User.query.get(user_id)
     if not user:
         return jsonify({"error": "User not found"}), 404
@@ -188,7 +188,7 @@ def get_me(user_id):
     }), 200
 
 
-# ✅ Глобальная обработка preflight-запросов (OPTIONS)
+
 @auth_blueprint.before_request
 def handle_options():
     """Разрешает preflight OPTIONS-запросы"""

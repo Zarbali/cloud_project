@@ -6,7 +6,7 @@ import UserForm from "./UserForm";
 export default function TaskManager() {
     const [tasks, setTasks] = useState([]);
     const [users, setUsers] = useState([]);
-    const [searchQuery, setSearchQuery] = useState(""); // 🔍 Стейт для поиска
+    const [searchQuery, setSearchQuery] = useState(""); // 🔍 State for search
 
     useEffect(() => {
         fetchTasks();
@@ -16,7 +16,7 @@ export default function TaskManager() {
         try {
             const token = localStorage.getItem("token");
             if (!token) {
-                alert("Ошибка: пользователь не авторизован.");
+                alert("Error: User is not authorized.");
                 return;
             }
 
@@ -25,13 +25,13 @@ export default function TaskManager() {
             });
 
             if (!response.ok) {
-                throw new Error("Ошибка при загрузке задач");
+                throw new Error("Error loading tasks");
             }
 
             const data = await response.json();
             setTasks(data);
         } catch (error) {
-            console.error("Ошибка при загрузке задач:", error);
+            console.error("Error loading tasks:", error);
         }
     };
 
@@ -41,7 +41,7 @@ export default function TaskManager() {
 
     const onUserCreated = (user) => {
         setUsers([...users, user]);
-        alert(`Пользователь ${user.username} успешно создан!`);
+        alert(`User ${user.username} has been successfully created!`);
     };
 
     const onTaskDeleted = async (taskId) => {
@@ -54,13 +54,13 @@ export default function TaskManager() {
 
             if (response.ok) {
                 setTasks(tasks.filter((task) => task.id !== taskId));
-                alert("Задача успешно удалена!");
+                alert("Task successfully deleted!");
             } else {
                 const data = await response.json();
-                alert(`Ошибка при удалении задачи: ${data.error}`);
+                alert(`Error deleting task: ${data.error}`);
             }
         } catch (error) {
-            console.error("Ошибка при удалении задачи:", error);
+            console.error("Error deleting task:", error);
         }
     };
 
@@ -79,17 +79,17 @@ export default function TaskManager() {
             if (response.ok) {
                 const updatedTask = await response.json();
                 setTasks(tasks.map((task) => (task.id === taskId ? updatedTask : task)));
-                alert("Задача успешно обновлена!");
+                alert("Task successfully updated!");
             } else {
                 const data = await response.json();
-                alert(`Ошибка при обновлении задачи: ${data.error}`);
+                alert(`Error updating task: ${data.error}`);
             }
         } catch (error) {
-            console.error("Ошибка при обновлении задачи:", error);
+            console.error("Error updating task:", error);
         }
     };
 
-    // 🔍 Фильтрация задач по названию и описанию
+    // 🔍 Filter tasks by title and description
     const filteredTasks = tasks.filter(task =>
         task.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
         task.description.toLowerCase().includes(searchQuery.toLowerCase())
@@ -97,14 +97,14 @@ export default function TaskManager() {
 
     return (
         <div>
-            <h1>Менеджер задач</h1>
+            <h1>Task Manager</h1>
             <UserForm onUserCreated={onUserCreated} />
             <TaskForm onTaskCreated={onTaskCreated} />
 
-            {/* 🔍 Поле поиска */}
+            {/* 🔍 Search input */}
             <input
                 type="text"
-                placeholder="🔍 Поиск по задачам"
+                placeholder="🔍 Search tasks"
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
             />

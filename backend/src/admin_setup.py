@@ -1,10 +1,10 @@
 from db_models import db, User
 from werkzeug.security import generate_password_hash
-from app import app  # ✅ Подключаем Flask-приложение
+from app import app
 
-# ✅ Создаём контекст приложения для работы с базой данных
+
 with app.app_context():
-    # Проверяем, есть ли уже админ
+
     if not User.query.filter_by(username="admin").first():
         admin = User(
             username="admin",
@@ -14,6 +14,6 @@ with app.app_context():
         )
         db.session.add(admin)
         db.session.commit()
-        print("✅ Админ создан: логин 'admin', пароль 'admin'")
+        print("✅ Admin created: login 'admin', password 'admin'")
     else:
-        print("⚠️ Админ уже существует!")
+        print("⚠️ The admin already exists!")

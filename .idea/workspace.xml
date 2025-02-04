@@ -5,47 +5,34 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="8210d6ad-342a-421a-870d-fc323eb0fb10" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/cloud_project.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/profiles_settings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/.dockerignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/Dockerfile" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/requirements.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/src/admin_setup.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/src/app.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/src/auth.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/src/config.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/src/db_models.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/src/tasks.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/src/users.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/docker-compose.yml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/.dockerignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/Dockerfile" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/package.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/public/admin_login.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/public/admin_panel.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/public/index.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/public/login.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/public/register.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/public/style.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/public/task_manager.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/public/task_manager.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/public/tasks.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/public/tasks_admin.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/public/tasks_admin.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/public/users.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/src/App.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/src/LoginForm.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/src/RegisterForm.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/src/SearchBar.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/src/TaskForm.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/src/TaskList.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/src/TaskManager.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/src/UserForm.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/src/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ReadMe.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/backend/Dockerfile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/admin_setup.py" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/admin_setup.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/app.py" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/app.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/auth.py" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/auth.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/config.py" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/config.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/db_models.py" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/db_models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/tasks.py" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/tasks.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/users.py" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/users.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docker-compose.yml" beforeDir="false" afterPath="$PROJECT_DIR$/docker-compose.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/Dockerfile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/node_modules/.cache/.eslintcache" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/node_modules/.cache/.eslintcache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/node_modules/.cache/default-development/0.pack" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/node_modules/.cache/default-development/0.pack" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/node_modules/.cache/default-development/1.pack_" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/node_modules/.cache/default-development/1.pack_" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/node_modules/.cache/default-development/index.pack" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/node_modules/.cache/default-development/index.pack.old" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/node_modules/.cache/default-development/index.pack.old" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/public/admin_login.html" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/public/admin_login.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/public/login.html" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/public/login.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/public/register.html" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/public/register.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/public/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/public/style.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/public/tasks_admin.css" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/public/tasks_admin.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/public/tasks_admin.html" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/public/tasks_admin.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/LoginForm.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/LoginForm.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/RegisterForm.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/RegisterForm.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/TaskForm.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/TaskForm.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/TaskList.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/TaskList.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/TaskManager.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/TaskManager.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -75,6 +62,9 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="QODANA_PROBLEMS_VIEW_TAB" />
+  </component>
   <component name="ProjectColorInfo"><![CDATA[{
   "associatedIndex": 8
 }]]></component>
@@ -91,7 +81,7 @@
     "Python.db_models.executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "git-widget-placeholder": "master",
+    "git-widget-placeholder": "main",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -118,7 +108,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1737991671719</updated>
-      <workItem from="1737991672587" duration="65082000" />
+      <workItem from="1737991672587" duration="69729000" />
     </task>
     <servers />
   </component>

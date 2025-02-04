@@ -17,22 +17,22 @@ export default function RegisterForm() {
 
             const data = await response.json();
             if (response.ok) {
-                alert("Регистрация успешна! Теперь войдите в систему.");
+                alert("Registration successful! Please log in now.");
             } else {
-                alert(`Ошибка: ${data.error}`);
+                alert(`Error: ${data.error}`);
             }
         } catch (error) {
-            console.error("Ошибка регистрации:", error);
-            alert("Ошибка при регистрации.");
+            console.error("Registration error:", error);
+            alert("Error during registration.");
         }
     };
 
     return (
         <form onSubmit={handleRegister}>
-            <h2>Регистрация</h2>
+            <h2>Register</h2>
             <input
                 type="text"
-                placeholder="Имя пользователя"
+                placeholder="Username"
                 value={username}
                 onChange={(e) => setUsername(e.target.value)}
                 required
@@ -46,12 +46,12 @@ export default function RegisterForm() {
             />
             <input
                 type="password"
-                placeholder="Пароль"
+                placeholder="Password"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
                 required
             />
-            <button type="submit">Зарегистрироваться</button>
+            <button type="submit">Sign Up</button>
         </form>
     );
 }

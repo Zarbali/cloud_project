@@ -19,32 +19,32 @@ export default function LoginForm({ onLogin }) {
                 localStorage.setItem("token", data.token);
                 onLogin(data.user_id, data.username);
             } else {
-                alert(`Ошибка: ${data.error}`);
+                alert(`Error: ${data.error}`);
             }
         } catch (error) {
-            console.error("Ошибка входа:", error);
-            alert("Ошибка при входе в систему.");
+            console.error("Login error:", error);
+            alert("Error logging in.");
         }
     };
 
     return (
         <form onSubmit={handleLogin}>
-            <h2>Вход</h2>
+            <h2>Login</h2>
             <input
                 type="text"
-                placeholder="Имя пользователя"
+                placeholder="Username"
                 value={username}
                 onChange={(e) => setUsername(e.target.value)}
                 required
             />
             <input
                 type="password"
-                placeholder="Пароль"
+                placeholder="Password"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
                 required
             />
-            <button type="submit">Войти</button>
+            <button type="submit">Log In</button>
         </form>
     );
 }
