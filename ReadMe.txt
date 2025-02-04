@@ -111,11 +111,14 @@ docker exec -it redis-container-name redis-cli
 127.0.0.1:6379> FLUSHALL
 
 **How to Test the Application**
-Test Authentication
+📍 Test Authentication
 Register a user: Go to http://localhost:3000/register.html.
-Log in: Go to http://localhost:3000/index.html.
-Use an admin account to access: http://localhost:3000/admin_login.html.
-command for admin role "your directory where the project"> docker exec -it flask_app python /app/src/admin_setup.py
+📍 Log in: Go to http://localhost:3000/index.html.
+👉 Use an admin account to access: http://localhost:3000/admin_login.html.
+👉 command for admin role "your directory where the project"> docker exec -it flask_app python /app/src/admin_setup.py
+after create
+login: admin
+password: admin
 
 Test Task CRUD
 Create a task from the Task Manager.
