@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin - View User Tasks</title>
+    <link rel="stylesheet" href="tasks_admin.css">
+</head>
+<body>
+    <div class="container">
+        <h1>User Tasks</h1>
+        <button class="back-btn" onclick="goBack()">Back</button>
+        <h2 id="userInfo"></h2>
+        <ul id="taskList"></ul>
+    </div>
+
+    <script>
+        async function fetchUserTasks() {
+            const token = localStorage.getItem("token");
+            if (!token) {
+                alert("You are not authorized!");
+                window.location.href = "index.html";
+                return;
+            }
+
+            const urlParams = new URLSearchParams(window.location.search);
+            const userId = urlParams.get("user_id");
+
+            if (!userId) {
+                alert("Invalid user ID");
+                window.location.href = "admin_panel.html";
+                return;
+            }
+
+            try {
+                // Получаем информацию о пользователе
+                const userResponse = await fetch(`http://localhost:5000/users/${userId}`, {
+                    headers: { "Authorization": `Bearer ${token}` }
+                });
+
+                if (userResponse.ok) {
+                    const user = await userResponse.json();
+                    document.getElementById("userInfo").innerText = `Tasks for ${user.username}`;
+                } else {
+                    alert("Error fetching user information.");
+                    window.location.href = "admin_panel.html";
+                    return;
+                }
+
+                // Получаем задачи пользователя
+                const response = await fetch(`http://localhost:5000/tasks/admin/${userId}`, {
+                    headers: { "Authorization": `Bearer ${token}` }
+                });
+
+                if (response.ok) {
+                    const tasks = await response.json();
+                    const taskList = document.getElementById("taskList");
+                    taskList.innerHTML = "";
+
+                    tasks.forEach(task => {
+                        const li = document.createElement("li");
+                        li.innerHTML = `
+                            <strong>${task.title}</strong> - ${task.description} 
+                            <span class="status ${task.status.toLowerCase()}">${task.status}</span>
+                            <button class="delete-task-btn" onclick="deleteTask(${task.id})">Delete</button>
+                        `;
+                        taskList.appendChild(li);
+                    });
+                } else {
+                    alert("Error fetching tasks.");
+                }
+            } catch (error) {
+                console.error("Error fetching tasks:", error);
+                alert("Connection error.");
+            }
+        }
+
+        async function deleteTask(taskId) {
+            if (!confirm("Are you sure you want to delete this task?")) return;
+
+            const token = localStorage.getItem("token");
+
+            try {
+                const response = await fetch(`http://localhost:5000/tasks/admin/delete/${taskId}`, {
+                    method: "DELETE",
+                    headers: { "Authorization": `Bearer ${token}` }
+                });
+
+                if (response.ok) {
+                    alert("Task successfully deleted.");
+                    fetchUserTasks();
+                } else {
+                    alert("Error deleting task.");
+                }
+            } catch (error) {
+                console.error("Error deleting task:", error);
+                alert("Connection error.");
+            }
+        }
+
+        function goBack() {
+            window.location.href = "admin_panel.html";
+        }
+
+        fetchUserTasks();
+    </script>
+</body>
+</html>

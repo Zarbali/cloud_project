@@ -1,0 +1,229 @@
+/* Основные стили */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f5f5f5;
+    color: #333;
+    text-align: center;
+    margin: 0;
+    padding: 20px;
+}
+
+.container {
+    max-width: 600px;
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    margin: auto;
+}
+
+/* Заголовок */
+h1 {
+    margin-bottom: 20px;
+    font-size: 24px;
+    color: #007BFF;
+}
+
+/* Кнопки */
+button {
+    background-color: #007BFF;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    margin: 5px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease-in-out, transform 0.2s ease-in-out;
+}
+
+button:hover {
+    background-color: #0056b3;
+    transform: scale(1.05);
+}
+
+/* Кнопка удаления профиля */
+.delete-profile-btn {
+    background-color: #DC3545;
+}
+
+.delete-profile-btn:hover {
+    background-color: #a71d2a;
+}
+
+/* Кнопка выхода */
+.logout-btn {
+    background-color: #FF5733;
+}
+
+.logout-btn:hover {
+    background-color: #d43f00;
+}
+
+/* Поля ввода */
+input, textarea {
+    width: 90%;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    transition: border-color 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+}
+
+input:focus, textarea:focus {
+    border-color: #007BFF;
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+    outline: none;
+}
+
+/* Список задач */
+ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+li {
+    margin-bottom: 10px;
+}
+
+/* Элемент задачи */
+.task-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    background-color: #fff;
+    transition: box-shadow 0.3s ease-in-out;
+}
+
+.task-item:hover {
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Контент задачи */
+.task-content {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    font-size: 14px;
+}
+
+/* Выпадающий список статусов */
+.task-status-dropdown {
+    padding: 5px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    font-size: 14px;
+}
+
+/* Кнопки задач */
+.task-actions {
+    display: flex;
+    gap: 10px;
+}
+
+.edit-button, .delete-button {
+    padding: 5px 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.2s ease-in-out, transform 0.2s ease-in-out;
+}
+
+.edit-button {
+    background-color: #007BFF;
+    color: #fff;
+}
+
+.edit-button:hover {
+    background-color: #0056b3;
+    transform: scale(1.05);
+}
+
+.delete-button {
+    background-color: #DC3545;
+    color: #fff;
+}
+
+.delete-button:hover {
+    background-color: #a71d2a;
+    transform: scale(1.05);
+}
+
+/* 🎨 Цвета статусов задач */
+.status-todo {
+    color: #FF5733;
+    font-weight: bold;
+}
+
+.status-inprogress {
+    color: #FFC107;
+    font-weight: bold;
+}
+
+.status-done {
+    color: #28A745;
+    font-weight: bold;
+}
+
+/* Анимации */
+button:active {
+    transform: scale(0.95);
+}
+
+/* Кнопка просмотра задач пользователя */
+.view-tasks-btn {
+    background-color: #17a2b8; /* Голубой цвет */
+    color: white;
+    border: none;
+    padding: 8px 12px;
+    margin: 5px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease-in-out, transform 0.2s ease-in-out;
+    font-size: 14px;
+}
+
+.view-tasks-btn:hover {
+    background-color: #117a8b;
+    transform: scale(1.05);
+}
+
+.view-tasks-btn:active {
+    transform: scale(0.95);
+}
+/* Кнопка просмотра задач пользователя */
+.view-tasks-btn {
+    background-color: #17a2b8; /* Голубой */
+    color: white;
+    border: none;
+    padding: 8px 12px;
+    margin: 5px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease-in-out, transform 0.2s ease-in-out;
+}
+
+.view-tasks-btn:hover {
+    background-color: #138496;
+    transform: scale(1.05);
+}
+
+/* Кнопка удаления задачи админом */
+.delete-task-btn {
+    background-color: #DC3545;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease-in-out, transform 0.2s ease-in-out;
+}
+
+.delete-task-btn:hover {
+    background-color: #a71d2a;
+    transform: scale(1.05);
+}

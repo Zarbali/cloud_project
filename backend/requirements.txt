@@ -1,0 +1,10 @@
+Flask
+psycopg2-binary
+SQLAlchemy
+Flask-SQLAlchemy
+redis
+Werkzeug
+PyJWT
+flask-cors
+flasgger
+

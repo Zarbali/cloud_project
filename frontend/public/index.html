@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Welcome to Task Manager</h1>
+        <p>Please select an action:</p>
+
+        <div class="buttons">
+            <a href="register.html"><button>Register</button></a>
+            <a href="login.html"><button>Login</button></a>
+            <a href="admin_login.html"><button class="admin-button">Admin Panel</button></a>
+        </div>
+    </div>
+
+    <script>
+        // Check user role
+        function checkAdminAccess() {
+            const token = localStorage.getItem("token");
+            if (!token) return;
+
+            fetch("http://localhost:5000/auth/check_role", {
+                method: "GET",
+                headers: { "Authorization": `Bearer ${token}` }
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.role === "admin") {
+                    document.getElementById("adminPanelBtn").style.display = "block";
+                }
+            })
+            .catch(error => console.error("Error checking role:", error));
+        }
+
+        function goToAdminPanel() {
+            window.location.href = "admin_panel.html";
+        }
+
+        checkAdminAccess();  // Check admin access when page loads
+    </script>
+</body>
+</html>

@@ -1,0 +1,15 @@
+# Общие вещи
+__pycache__/
+*.pyc
+*.log
+*.pid
+.env
+venv/
+env/
+
+# Node
+node_modules/
+
+# IDE
+.idea/
+.vscode/

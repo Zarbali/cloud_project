@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Task list</title>
+</head>
+<body>
+    <h1>Task list</h1>
+    <ul>
+        {% for task in tasks %}
+        <li>
+            <strong>{{ task.title }}</strong>: {{ task.description }}
+            (User: {{ task.user_id }})
+        </li>
+        {% endfor %}
+    </ul>
+</body>
+</html>

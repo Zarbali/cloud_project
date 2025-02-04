@@ -1,0 +1,76 @@
+version: '3.8'
+
+services:
+  # 1) Flask-приложение
+  backend:
+    build: ./backend
+    container_name: flask_app
+    depends_on:
+      - db
+      - redis
+    ports:
+      - "5000:5000"
+    environment:
+      # Секретный ключ Flask
+      - SECRET_KEY=dev_secret
+
+      # Переменные для подключения к Postgres
+      - DB_HOST=db
+      - DB_PORT=5432
+      - DB_USER=postgres
+      - DB_PASSWORD=postgres
+      - DB_NAME=cloud_db
+
+      # Переменные для Redis
+      - REDIS_HOST=redis
+      - REDIS_PORT=6379
+
+      # ✅ Добавляем FLASK_APP и режим разработки
+      - FLASK_APP=src.app
+      - FLASK_ENV=development
+      - FLASK_DEBUG=1
+
+    volumes:
+      - ./backend:/app
+    restart: unless-stopped
+
+  # 2) PostgreSQL
+  db:
+    image: postgres:15
+    container_name: postgres_db
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_DB=cloud_db
+    ports:
+      - "5432:5432"
+    volumes:
+      - db_data:/var/lib/postgresql/data
+    restart: unless-stopped
+
+  # 3) Redis
+  redis:
+    image: redis:7
+    container_name: redis
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis_data:/data
+    restart: unless-stopped
+
+  # 4) React + Nginx (фронтенд)
+  frontend:
+    build: ./frontend
+    container_name: react_frontend
+    ports:
+      - "3000:80"
+    environment:
+      # Если Flask в том же docker-compose, внутри сети он виден как http://backend:5000
+      - REACT_APP_API_URL=http://backend:5000
+    depends_on:
+      - backend
+    restart: unless-stopped
+
+volumes:
+  db_data:
+  redis_data:
